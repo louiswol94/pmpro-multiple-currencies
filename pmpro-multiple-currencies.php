@@ -22,17 +22,17 @@ function lmf_action_pmpro_membership_level_after_other_settings() {
     }
     ?>
 
-    <h2 class="title"><?php esc_html_e( 'Currency Settings', 'paid-memberships-pro' ); ?></h2>
+    <h2 class="title"><?php esc_html_e( 'Currency Settings', 'pmpro-multiple-currencies' ); ?></h2>
 
     <table class="form-table">
         <tbody>
             <tr>
                 <th scope="row" valign="top">
-                    <label><?php _e('Choose a currency for this membership level', 'paid-memberships-pro' );?>:</label>
+                    <label><?php _e('Choose a currency for this membership level', 'pmpro-multiple-currencies' );?>:</label>
                 </th>
                 <td>
                     <select name="pmpro_custom_currency">
-                        <option value="DEFAULT" <?php if ( $selected_custom_currency == "DEFAULT" ) { ?>selected="selected"<?php } ?>>Use the default currency</option>
+                        <option value="DEFAULT" <?php if ( $selected_custom_currency == "DEFAULT" ) { ?>selected="selected"<?php } ?>><?php _e( 'Use the default currency', 'pmpro-multiple-currencies' ); ?></option>
                         <?php
                             foreach ( $pmpro_currencies as $key => $val) {
                                 if ( is_array( $val ) ) {
@@ -61,7 +61,7 @@ function lmf_action_pmpro_membership_level_after_other_settings() {
                             }
                         ?>
                     </select>
-                    <p class="description">Make sure your payment gateway supports the selected currency.</p>
+                    <p class="description"><?php _e( 'Make sure your payment gateway supports the selected currency.', 'pmpro-multiple-currencies' ); ?></p>
                 </td>
             </tr>
         </tbody>
