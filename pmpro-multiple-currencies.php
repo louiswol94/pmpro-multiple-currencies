@@ -37,7 +37,7 @@ function lmf_action_pmpro_membership_level_after_other_settings() {
                             foreach ( $pmpro_currencies as $key => $val) {
                                 if ( is_array( $val ) ) {
                                     $cdescription = $val['name'];
-                                    $custom_symbol = $val['symbol'];
+                                    $custom_symbol = ( !empty( $val['symbol'] ) ) ? $val['symbol'] : $val['name'];
                                 } else {
                                     $cdescription = $val;
                                     $custom_symbol = $key;
