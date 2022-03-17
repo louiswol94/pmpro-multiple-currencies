@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Multiple Currencies for Paid Memberships Pro
  * Description:       Change currencies depending on Paid Memberships Pro level.
- * Version:           0.0.1
+ * Version:           0.0.2
  * Author:            Louis Wolmarans
  * Author URI:        https://letmefreelance.co.za/
  * License:           GPL v2 or later
