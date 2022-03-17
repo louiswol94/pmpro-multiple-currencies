@@ -1,10 +1,10 @@
 === Multiple Currencies for Paid Memberships Pro ===
-Contributors: louiswol94
+Contributors: louiswol94, jarryd-long
 Donate link: https://letmefreelance.co.za/donate
 Tags: pmpro, currency
 Requires at least: 4.7
 Tested up to: 5.7.1
-Stable tag: 0.0.1
+Stable tag: 0.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,10 @@ Credit: Plugin was inspired by this gist https://gist.github.com/strangerstudios
 5. Checkout page
 
 == Changelog ==
+
+= 0.0.2 - 2022-03-17 =
+* Fix: Undefined index on the symbol array key
+* Tweak: Minor localization changes
 
 = 0.0.1 =
 Inital release.
