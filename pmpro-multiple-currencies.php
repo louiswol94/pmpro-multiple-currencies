@@ -165,62 +165,14 @@ function lmf_pmpro_change_currency_for_invoice( $pmpro_price_parts_with_total, $
 	$custom_currency = explode( ',', get_pmpro_membership_level_meta( $level_id, 'pmpro_custom_currency', true ) );
 	
 	if ( ! empty( $custom_currency[ 1 ] ) ) {
-		$pmpro_price_parts_with_total['total']['value'] = lmf_pmpro_formatPrice( $pmpro_invoice->total, $pmpro_invoice );
-	}
+		global $pmpro_currency_symbol;
 
-	echo 'hi';
+		$pmpro_currency_symbol = html_entity_decode( $pmpro_currency_symbol );
+		$pmpro_price_parts_with_total['total']['value'] = html_entity_decode( $pmpro_price_parts_with_total['total']['value'] );
+
+		$pmpro_price_parts_with_total['total']['value'] = str_replace( $pmpro_currency_symbol, $custom_currency[1] . ' ', $pmpro_price_parts_with_total['total']['value'] );
+	}
 
 	return $pmpro_price_parts_with_total;
 }
 add_filter( 'pmpro_get_price_parts_with_total', 'lmf_pmpro_change_currency_for_invoice', 10, 2 );
-
-// Copied from PMPro core, and added $pmpro_invoice param.
-function lmf_pmpro_formatPrice( $price, $pmpro_invoice ) {
-	global $pmpro_currency, $pmpro_currency_symbol, $pmpro_currencies;
-
-	// Edits start
-	$custom_currency_symbol = $pmpro_currency_symbol;
-
-	$level_id = (int) $pmpro_invoice->membership_id;
-	$custom_currency = explode( ',', get_pmpro_membership_level_meta( $level_id, 'pmpro_custom_currency', true ) );
-
-	if ( ! empty( $custom_currency[ 1 ] ) ) {
-		$custom_currency_symbol = $custom_currency[1];
-	}
-	// Edits end - will now use $custom_currency_symbol instead of $pmpro_currency_symbol
-
-	// start with the rounded price
-	$formatted = pmpro_round_price( $price );
-
-	$decimals = isset( $pmpro_currencies[ $pmpro_currency ]['decimals'] ) ? (int) $pmpro_currencies[ $pmpro_currency ]['decimals'] : pmpro_get_decimal_place();
-	$decimal_separator = isset( $pmpro_currencies[ $pmpro_currency ]['decimal_separator'] ) ? $pmpro_currencies[ $pmpro_currency ]['decimal_separator'] : '.';
-	$thousands_separator = isset( $pmpro_currencies[ $pmpro_currency ]['thousands_separator'] ) ? $pmpro_currencies[ $pmpro_currency ]['thousands_separator'] : ',';
-	$symbol_position = isset( $pmpro_currencies[ $pmpro_currency ]['position'] ) ? $pmpro_currencies[ $pmpro_currency ]['position'] : 'left';
-
-	// settings stored in array?
-	if ( ! empty( $pmpro_currencies[ $pmpro_currency ] ) && is_array( $pmpro_currencies[ $pmpro_currency ] ) ) {
-		// format number do decimals, with decimal_separator and thousands_separator
-		$formatted = number_format(
-			$formatted,
-			$decimals,
-			$decimal_separator,
-			$thousands_separator
-		);
-
-		// which side is the symbol on?
-		if ( ! empty( $symbol_position ) && $symbol_position == 'left' ) {
-			$formatted = $custom_currency_symbol . $formatted;
-		} else {
-			$formatted = $formatted . $custom_currency_symbol;
-		}
-	} else {
-		// default to symbol on the left, 2 decimals using . and ,
-		$formatted = $custom_currency_symbol . number_format( $formatted, pmpro_get_decimal_place() );
-	}
-
-	// Trim the trailing zero values.
-	$formatted = pmpro_trim_trailing_zeroes( $formatted, $decimals, $decimal_separator, $custom_currency_symbol, $symbol_position );
-
-	// filter
-	return apply_filters( 'pmpro_format_price', $formatted, $price, $pmpro_currency, $custom_currency_symbol );
-}
