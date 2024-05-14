@@ -16,6 +16,8 @@ This plugin allows you to add multiple currencies to the Paid Memberships Pro pl
 
 Please note: this will update the currency on the following pages:
 * Membership Levels page
+* Membership Confirmation page
+* Membership Invoice page
 * Checkout page
 * Admin membership Levels page
 * Admin Level settings page

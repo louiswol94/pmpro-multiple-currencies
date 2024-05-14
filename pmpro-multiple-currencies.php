@@ -168,6 +168,8 @@ function lmf_pmpro_change_currency_for_invoice( $pmpro_price_parts_with_total, $
 		$pmpro_price_parts_with_total['total']['value'] = lmf_pmpro_formatPrice( $pmpro_invoice->total, $pmpro_invoice );
 	}
 
+	echo 'hi';
+
 	return $pmpro_price_parts_with_total;
 }
 add_filter( 'pmpro_get_price_parts_with_total', 'lmf_pmpro_change_currency_for_invoice', 10, 2 );
