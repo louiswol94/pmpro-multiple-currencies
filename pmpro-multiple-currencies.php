@@ -167,10 +167,10 @@ function lmf_pmpro_change_currency_for_invoice( $pmpro_price_parts_with_total, $
 	if ( ! empty( $custom_currency[ 1 ] ) ) {
 		global $pmpro_currency_symbol;
 
-		$pmpro_currency_symbol = html_entity_decode( $pmpro_currency_symbol );
+		$custom_currency_symbol = html_entity_decode( $pmpro_currency_symbol );
 		$pmpro_price_parts_with_total['total']['value'] = html_entity_decode( $pmpro_price_parts_with_total['total']['value'] );
 
-		$pmpro_price_parts_with_total['total']['value'] = str_replace( $pmpro_currency_symbol, $custom_currency[1] . ' ', $pmpro_price_parts_with_total['total']['value'] );
+		$pmpro_price_parts_with_total['total']['value'] = str_replace( $custom_currency_symbol, $custom_currency[1] . ' ', $pmpro_price_parts_with_total['total']['value'] );
 	}
 
 	return $pmpro_price_parts_with_total;
