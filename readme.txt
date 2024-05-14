@@ -44,7 +44,7 @@ Credit: Plugin was inspired by this gist https://gist.github.com/strangerstudios
 == Changelog ==
 
 = 0.0.3 - 2024-05-14 =
-* Tweak: Add support for Invoice and Confirmation pages
+* Tweak: Add support for Invoice and Confirmation pages (props @andrewza for the direction)
 
 = 0.0.2 - 2022-03-17 =
 * Fix: Undefined index on the symbol array key
