@@ -4,7 +4,7 @@ Donate link: https://letmefreelance.co.za/donate
 Tags: pmpro, currency
 Requires at least: 4.7
 Tested up to: 6.5.3
-Stable tag: 0.0.2
+Stable tag: 0.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,9 @@ Credit: Plugin was inspired by this gist https://gist.github.com/strangerstudios
 7. Membership Invoice page
 
 == Changelog ==
+
+= 0.0.4 - 2024-05-14 =
+* Tweak: Improve currency update on Invoice and Confirmation page
 
 = 0.0.3 - 2024-05-14 =
 * Tweak: Add support for Invoice and Confirmation pages (props @andrewza for the direction)
