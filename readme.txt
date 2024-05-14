@@ -36,6 +36,8 @@ Credit: Plugin was inspired by this gist https://gist.github.com/strangerstudios
 3. Admin Membership Levels page
 4. Customer Membership Levels page
 5. Checkout page
+6. Membership Confirmation page
+7. Membership Invoice page
 
 == Changelog ==
 
