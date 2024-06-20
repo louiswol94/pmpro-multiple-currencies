@@ -159,20 +159,46 @@ function lmf_pmpro_level_cost_text( $r, $level, $tags, $short ) {
 }
 add_filter( "pmpro_level_cost_text", "lmf_pmpro_level_cost_text", 10, 4 );
 
-// Invoice and confirmation pages
-function lmf_pmpro_change_currency_for_invoice( $pmpro_price_parts_with_total, $pmpro_invoice ) {
-	$level_id = (int) $pmpro_invoice->membership_id;
+function lmf_pmpro_amounts_filter( $total, $data ) {
+	$level_id = (int) $data->membership_id;
 	$custom_currency = explode( ',', get_pmpro_membership_level_meta( $level_id, 'pmpro_custom_currency', true ) );
 	
 	if ( ! empty( $custom_currency[ 1 ] ) ) {
 		global $pmpro_currency_symbol;
 
 		$custom_currency_symbol = html_entity_decode( $pmpro_currency_symbol );
-		$pmpro_price_parts_with_total['total']['value'] = html_entity_decode( $pmpro_price_parts_with_total['total']['value'] );
+		$total = html_entity_decode( $total );
 
-		$pmpro_price_parts_with_total['total']['value'] = str_replace( $custom_currency_symbol, $custom_currency[1] . ' ', $pmpro_price_parts_with_total['total']['value'] );
+		$total = str_replace( $custom_currency_symbol, $custom_currency [ 1 ], $total );
 	}
 
-	return $pmpro_price_parts_with_total;
+	return $total;
 }
-add_filter( 'pmpro_get_price_parts_with_total', 'lmf_pmpro_change_currency_for_invoice', 10, 2 );
+add_filter( 'pmpro_order_formatted_total', 'lmf_pmpro_amounts_filter', 10, 2 );
+
+
+function lmf_pmpro_after_order_settings_table( $order ) {
+	$level_id = (int) $order->membership_id;
+	$custom_currency = explode( ',', get_pmpro_membership_level_meta( $level_id, 'pmpro_custom_currency', true ) );
+
+	if ( empty( $custom_currency[ 1 ] ) ) {
+		return;
+	}
+	?>
+	<div class="pmpro_section" data-visibility="shown" data-activated="true">
+		<div class="pmpro_section_inside">
+		<table class="form-table">
+			<tbody>		
+				<tr>
+					<th scope="row" valign="top"><label for="notes">Currency</label></th>
+					<td>
+						<?php echo $custom_currency [ 1 ]; ?>
+					</td>
+				</tr>					
+			</tbody>
+		</table>
+		</div>
+	</div>
+	<?php
+}
+add_action( "pmpro_after_order_settings_table", "lmf_pmpro_after_order_settings_table" );
