@@ -14,18 +14,9 @@ Add multiple currencies to Paid Memberships Pro.
 
 This plugin allows you to add multiple currencies to the Paid Memberships Pro plugin. This will enable you to specify a different currency per membership level, or it will just use the default currency setting if left empty.
 
-Please note: this will update the currency on the following pages:
-* Membership Levels page
-* Membership Confirmation page
-* Membership Invoice page
-* Checkout page
-* Admin membership Levels page
-* Admin Level settings page
-* Admin Order & Reports page
-* Customer Account & Invoice history
-* Emails
-
-Please note: this is not an official add on from the PMPro team.
+Please note:
+- This is not an official add on from the PMPro team.
+- Feel free to let us know if there are any outstanding pages.
 
 Credit: Plugin was inspired by this gist https://gist.github.com/strangerstudios/8806443
 
@@ -42,7 +33,7 @@ Credit: Plugin was inspired by this gist https://gist.github.com/strangerstudios
 == Changelog ==
 
 = 0.0.5 - 2024-11-18 =
-* Tweak: Improve currency update on Invoice and Confirmation page
+* Tweak: Added support for the remaining pages and emails
 
 = 0.0.4 - 2024-05-14 =
 * Tweak: Improve currency update on Invoice and Confirmation page
