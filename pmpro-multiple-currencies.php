@@ -176,6 +176,22 @@ function lmf_pmpro_amounts_filter( $total, $data ) {
 }
 add_filter( 'pmpro_order_formatted_total', 'lmf_pmpro_amounts_filter', 10, 2 );
 
+function lmf_subscription_formatted_cost_text( $total, $data ) {
+	$level_id = (int) $data->get_membership_level_id();
+	$custom_currency = explode( ',', get_pmpro_membership_level_meta( $level_id, 'pmpro_custom_currency', true ) );
+	
+	if ( ! empty( $custom_currency[ 1 ] ) ) {
+		global $pmpro_currency_symbol;
+
+		$custom_currency_symbol = html_entity_decode( $pmpro_currency_symbol );
+		$total = html_entity_decode( $total );
+
+		$total = str_replace( $custom_currency_symbol, $custom_currency [ 1 ], $total );
+	}
+
+	return $total;
+}
+add_filter( 'pmpro_subscription_cost_text', 'lmf_subscription_formatted_cost_text', 10, 2 );
 
 function lmf_pmpro_after_order_settings_table( $order ) {
 	$level_id = (int) $order->membership_id;

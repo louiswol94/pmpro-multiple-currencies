@@ -21,8 +21,6 @@ Please note: this will update the currency on the following pages:
 * Checkout page
 * Admin membership Levels page
 * Admin Level settings page
-
-Due to no hooks and filters on the following sections of PMPro's core, the following pages will not be able to reflect the custom currencies at the moment:
 * Admin Order & Reports page
 * Customer Account & Invoice history
 * Emails
@@ -42,6 +40,9 @@ Credit: Plugin was inspired by this gist https://gist.github.com/strangerstudios
 7. Membership Invoice page
 
 == Changelog ==
+
+= 0.0.5 - 2024-11-18 =
+* Tweak: Improve currency update on Invoice and Confirmation page
 
 = 0.0.4 - 2024-05-14 =
 * Tweak: Improve currency update on Invoice and Confirmation page
