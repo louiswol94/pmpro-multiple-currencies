@@ -7,7 +7,6 @@
  * Author URI:        https://letmefreelance.co.za/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Requires Plugins:  paid-memberships-pro
  */
 
  // Add a currency setting on the level edit screen
